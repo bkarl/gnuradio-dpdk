@@ -127,7 +127,8 @@ namespace dpdk {
 
 					if (packet->ipv4_hdr.next_proto_id == IPPROTO_UDP && 
 						packet->ether_hdr.ether_type == htons(RTE_ETHER_TYPE_IPV4) &&
-						packet->udp.dst_port == htons(sampleSource->getUdpRxPort())) 
+						packet->udp.dst_port == htons(sampleSource->getUdpRxPort()) &&
+						m->pkt_len == PAYLOAD_SIZE + sizeof(struct chdr_packet_all_headers)) 
 					{
 						rte_ring_enqueue(sampleSource->getRteRing(), (void *)m);
 					}
