@@ -4,6 +4,7 @@ UDP RX implementation for IQ samples using DPDK
 # Features
 * accepts UDP packets with legacy CHDR header (64 bits) and IQ samples in LE format
 * outputs complex stream
+* core 0 and 1 for rx threads and dpdk device id 0 are currently hardcoded
 
 For details of legacy CHDR see https://files.ettus.com/manual/page_rtp.html
 
@@ -51,6 +52,7 @@ start -f chdr_generator.py -m 1000mbps
 * C++ unit tests
 * check seqnum of CHDR and track packet error rate
 * general rx statistics
+* add possibility to set DPDK EAL parameters, used lcored and dpdk device
 * add support for jumbo frames
 * add more packet formats and output types
 * add TX (sink)
